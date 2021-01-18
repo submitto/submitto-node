@@ -1,4 +1,4 @@
-import AWS from 'aws-sdk';
+import { SNS, AWSError } from 'aws-sdk';
 
 interface ISendMessageParams {
   message: string;
@@ -6,18 +6,15 @@ interface ISendMessageParams {
 }
 
 export default class Client {
-  private credentials;
-
   private sns;
 
   constructor() {
-    this.credentials = new AWS.Credentials({
-      accessKeyId: String(process.env.AWS_ACCESS_KEY_ID),
-      secretAccessKey: String(process.env.AWS_ACCESS_SECRET),
-    });
-    this.sns = new AWS.SNS({
-      region: process.env.AWS_DEFAULT_REGION,
-      credentials: this.credentials,
+    this.sns = new SNS({
+      region: 'us-east-1',
+      credentials: {
+        accessKeyId: String(process.env.AWS_ACCESS_KEY_ID),
+        secretAccessKey: String(process.env.AWS_ACCESS_SECRET),
+      },
     });
   }
 
@@ -25,21 +22,19 @@ export default class Client {
     message,
     phone,
   }: ISendMessageParams): Promise<void> {
-    try {
-      const params = {
-        Message: message,
-        PhoneNumber: phone,
-      };
+    const params = {
+      Message: message,
+      PhoneNumber: phone,
+    };
 
-      const sendMessage = await this.sns.publish(params).promise();
-
-      if (sendMessage) {
-        const messageSentId = sendMessage.MessageId;
-
-        console.log(`messageId is ${messageSentId}`);
-      }
-    } catch (err) {
-      console.log(err);
-    }
+    await this.sns
+      .publish(params)
+      .promise()
+      .then((data: SNS.PublishResponse) => {
+        console.log('Event published to SNS, message Id: ', data.MessageId);
+      })
+      .catch((err: AWSError) => {
+        console.log(err, err.stack);
+      });
   }
 }

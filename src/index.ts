@@ -8,5 +8,5 @@ const client = new Client();
 
 client.publishMessage({
   message: 'Hello world',
-  phone: '+5561983379257',
+  phone: '+5561982656044',
 });
