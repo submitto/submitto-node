@@ -6,7 +6,10 @@ dotenv.config();
 
 const client = new Client();
 
-client.getCredentials({
-  token:
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MTEwMTIwNzEsImV4cCI6MTYxMTA5ODQ3MSwic3ViIjoiNjA1MWRkY2YtODkzMS00YzAxLThhZWItMjQ3OGRiNzVlNTlhIn0.bXEQNm_p4B7qx0JToqvK-V6Vn-LxiUBZBExs3_Kapqs',
+const id = String(process.env.SUBMITTO_ACCESS_ID);
+const token = String(process.env.SUBMITTO_ACCESS_TOKEN);
+
+client.create(id, token, {
+  message: 'Hello world',
+  phone: '+5561982656044',
 });

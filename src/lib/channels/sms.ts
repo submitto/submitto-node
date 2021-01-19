@@ -1,6 +1,6 @@
 import { SNS, AWSError } from 'aws-sdk';
 
-interface ISendMessageParams {
+export interface ISendMessageParams {
   message: string;
   phone: string;
 }
