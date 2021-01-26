@@ -1,29 +1,19 @@
+// import { ISendSMSParams } from 'lib/types/submitto';
 import api from '../utils/axios';
-import SMSChannel, { ISendMessageParams } from './channels/sms';
+import SMSChannel from './channels/sms';
 
 export default class Client {
   private sms = new SMSChannel();
 
-  public async create(
-    id: string,
-    token: string,
-    { message, phone }: ISendMessageParams,
-  ): Promise<void> {
+  public async create(token: string): Promise<void> {
     await api
-      .get('profile', {
+      .post('sms', {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then(response => {
-        const responseId = response.data.id;
-
-        if (responseId !== id) {
+      .then(request => {
+        if (!request.headers.authorization) {
           throw new Error('Authentication failed');
         }
-
-        return this.sms.publishMessage({
-          message,
-          phone,
-        });
       })
       .catch(error => {
         console.log(error);
