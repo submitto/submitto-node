@@ -19,14 +19,15 @@
         "prettier"
     ],
     "rules": {
+      "no-use-before-define": "off",
+      "import/prefer-default-export": "off",
+      "@typescript-eslint/explicit-module-boundary-types":"off",
       "@typescript-eslint/no-explicit-any":"off",
       "no-useless-constructor":"off",
       "camelcase":"off",
       "class-methods-use-this":"off",
       "no-console": "off",
-      "prettier/prettier": ["error", {
-        "endOfLine":"auto"
-      }],
+      "prettier/prettier": "error",
 	   	"import/extensions": [
 	      "error",
 	      "ignorePackages",
