@@ -18,8 +18,3 @@
 
 - [Node](https://nodejs.org/en/) - Javascript Runtime Environment.
 - [Axios](https://github.com/axios/axios) - Promise based HTTP client for the browser and node.js.
-
-## ✍️ Author <a name = "authors"></a>
-
-- [@RafaelLeveske](https://github.com/RafaelLeveske)
-- [Linkedin](https://www.linkedin.com/in/rafael-vieira-506331182/)
