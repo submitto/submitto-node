@@ -9,7 +9,7 @@
 
 ## 🏁 About <a name = "about"></a>
 
-- This project is a SKD was created based on the Submitto [API](https://github.com/submitto/submitto-api), this SDK still in development, as the current version is a beta version
+- This project is a sending sms client SKD, and it was created based on the Submitto [API](https://github.com/submitto/submitto-api), this SDK still in development, as the current version is a beta version.
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 
