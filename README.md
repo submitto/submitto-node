@@ -3,10 +3,7 @@
 ## 📝 Conteúdo
 
 - [About](#about)
-- [Getting Started](#getting_started)
 - [Built Using](#built_using)
-- [Author](#authors)
-- [Acknowledgement](#acknowledgement)
 
 ---
 
